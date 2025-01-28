@@ -9,8 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
+        accent: "var(--accent)",
+        "accent-dark": "var(--accent-dark)",
         background: "var(--background)",
-        foreground: "var(--foreground)",
+      },
+      screens: {
+        "3xl": "1920px",
+        "4xl": "2560px",
+        touch: { raw: "(pointer: coarse)" },
+        mouse: { raw: "(hover: hover)" },
       },
     },
   },

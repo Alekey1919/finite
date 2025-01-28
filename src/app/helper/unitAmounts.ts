@@ -1,0 +1,5 @@
+export const LIFE_EXPECTANCY = 90;
+
+export const WEEKS_IN_LIFE = 52 * LIFE_EXPECTANCY;
+
+export const MONTHS_IN_LIFE = 12 * LIFE_EXPECTANCY;
