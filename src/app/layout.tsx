@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
-import StoreProvider from "./redux/StoreProvider";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import Navbar from "./components/Navbar";
@@ -25,15 +24,13 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <StoreProvider>
-      <html lang={locale} className="min-h-screen w-screen bg-background">
-        <body className={`${oswald.variable} antialiased`}>
-          <Navbar />
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </body>
-      </html>
-    </StoreProvider>
+    <html lang={locale} className="min-h-screen w-screen bg-background">
+      <body className={`${oswald.variable} antialiased`}>
+        <Navbar />
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

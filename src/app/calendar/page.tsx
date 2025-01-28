@@ -1,8 +1,6 @@
 "use client";
 
-import { useSelector } from "react-redux";
 import LivedTime from "./LivedTime";
-import { RootState } from "../redux/store";
 import BirthDateInput from "./BirthDateInput";
 import { twMerge } from "tailwind-merge";
 import { useMemo, useState } from "react";
@@ -11,6 +9,7 @@ import {
   MONTHS_IN_LIFE,
   WEEKS_IN_LIFE,
 } from "../helper/unitAmounts";
+import useUserDataStore from "../stores/userDataStore";
 
 enum TimeMeasurements {
   Weeks = "weeks",
@@ -23,7 +22,7 @@ const Calendar = () => {
     TimeMeasurements.Weeks
   );
 
-  const userData = useSelector((state: RootState) => state.userData);
+  const { birthDate } = useUserDataStore();
 
   const gridData = useMemo(() => {
     if (timeMeasurement === TimeMeasurements.Weeks) {
@@ -35,14 +34,14 @@ const Calendar = () => {
     }
   }, [timeMeasurement]);
 
-  if (!userData || !userData?.birthDate) {
+  if (!birthDate) {
     return <BirthDateInput />;
   }
 
   return (
     <div className="flex flex-col space-y-10">
       <span className="title text-center text-accent">You have lived</span>
-      <LivedTime birthDate={userData.birthDate} />
+      <LivedTime birthDate={birthDate} />
 
       <div className="flex space-x-8 justify-center text-[#a37a5c]">
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>

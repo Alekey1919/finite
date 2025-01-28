@@ -1,11 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { ColorThemesEnum } from "../utils/autoDetectColorPreference";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectTheme,
-  setDarkMode,
-  setLightMode,
-} from "../redux/slices/themeSlice";
+import useThemeStore from "../stores/themeStore";
 import { setCookie } from "../utils/cookies";
 
 export const ColorPalette = {
@@ -15,9 +10,7 @@ export const ColorPalette = {
 };
 
 const useColorTheme = () => {
-  const theme = useSelector(selectTheme);
-
-  const dispatch = useDispatch();
+  const { theme, setDarkMode, setLightMode } = useThemeStore();
 
   const switchColorTheme = useCallback(() => {
     const newTheme =
@@ -25,11 +18,12 @@ const useColorTheme = () => {
         ? ColorThemesEnum.Light
         : ColorThemesEnum.Dark;
 
-    console.log("setting");
-    dispatch(
-      newTheme === ColorThemesEnum.Dark ? setDarkMode() : setLightMode()
-    );
-  }, [dispatch, theme]);
+    if (newTheme === ColorThemesEnum.Dark) {
+      setDarkMode();
+    } else {
+      setLightMode();
+    }
+  }, [setDarkMode, setLightMode, theme]);
 
   // Adding transition to all elements so that the color change is smooth
   // Clearing it afterwards

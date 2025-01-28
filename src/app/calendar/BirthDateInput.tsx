@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setBirthDate } from "../redux/slices/userData";
+import useUserDataStore from "../stores/userDataStore";
 
 const maxYear = new Date().getFullYear();
 
@@ -45,13 +44,13 @@ const BirthDateInput = () => {
   const [month, setMonth] = useState(11);
   const [year, setYear] = useState(1998);
 
-  const dispatch = useDispatch();
+  const { setBirthDate } = useUserDataStore();
   const t = useTranslations();
 
   const handleSave = (day: number, month: number, year: number) => {
     const birthDate = new Date(year, month - 1, day);
 
-    dispatch(setBirthDate(birthDate.getTime()));
+    setBirthDate(birthDate.getTime());
   };
 
   return (
