@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --accent: #a37a5c;
-  --primary: #a37a5c;
+  --background: #e9ecef;
+  --accent: #2d3538;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
+  color: var(--accent);
+  transition: background-color 300ms ease-out, color 300ms ease-out;
   font-family: Arial, Helvetica, sans-serif;
 }
 
