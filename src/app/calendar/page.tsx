@@ -55,20 +55,23 @@ const Calendar = () => {
         </button>
       </div>
       <div
-        className="grid grid-cols-12 gap-2 mx-auto"
+        className="grid gap-2 mx-auto"
         style={{
           gridTemplateColumns: `repeat(${gridData.colums}, minmax(0, 1fr))`,
         }}
+        key={0}
       >
-        {new Array(gridData.boxes).fill(0).map((_, index) => (
-          <div
-            className={twMerge(
-              "w-3 h-3 border-solid border-accent border-[1px]",
-              index < 39 && "bg-accent"
-            )}
-            key={index}
-          ></div>
-        ))}
+        {new Array(WEEKS_IN_LIFE).fill(null).map((_, index) => {
+          return (
+            <div
+              className={twMerge(
+                "w-3 h-3 border-solid border-accent border-[1px]",
+                index > gridData.boxes && "hidden"
+              )}
+              key={index}
+            />
+          );
+        })}
       </div>
     </div>
   );
