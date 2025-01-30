@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ColorThemesEnum } from "../utils/autoDetectColorPreference";
 import useThemeStore from "../stores/themeStore";
 import { setCookie } from "../utils/cookies";
@@ -10,9 +10,13 @@ export const ColorPalette = {
 };
 
 const useColorTheme = () => {
+  const [isChangingTheme, setIsChangingTheme] = useState(false);
+
   const { theme, setDarkMode, setLightMode } = useThemeStore();
 
   const switchColorTheme = useCallback(() => {
+    if (isChangingTheme) return;
+
     const newTheme =
       theme === ColorThemesEnum.Dark
         ? ColorThemesEnum.Light
@@ -23,7 +27,7 @@ const useColorTheme = () => {
     } else {
       setLightMode();
     }
-  }, [setDarkMode, setLightMode, theme]);
+  }, [setDarkMode, setLightMode, theme, isChangingTheme]);
 
   // Adding transition to all elements so that the color change is smooth
   // Clearing it afterwards
@@ -44,6 +48,9 @@ const useColorTheme = () => {
   const changeColorVariables = useCallback((newTheme: ColorThemesEnum) => {
     const root = document.querySelector(":root") as HTMLElement;
 
+    // This applies display none to the calendar so that the transition is smooth, otherwise it could lag the page too much
+    document.body.classList.add("changing-theme");
+
     if (!root) return;
 
     const background =
@@ -60,7 +67,30 @@ const useColorTheme = () => {
     root?.style.setProperty("--accent", accent);
 
     setCookie("theme", newTheme);
+
+    fadeInCalendar();
   }, []);
+
+  const fadeInCalendar = () => {
+    const calendar = document.getElementById("calendar");
+
+    if (!calendar) return;
+
+    setIsChangingTheme(true);
+
+    setTimeout(() => {
+      // Removing the class so that the calendar boxes are rendered
+      document.body.classList.remove("changing-theme");
+      // Add the fade-in class to the calendar so that it fades in
+      calendar.classList.add("fade-in");
+
+      setTimeout(() => {
+        // Removing the fade-in class so that it is ready to perform the animation once we change the theme again
+        calendar.classList.remove("fade-in");
+        setIsChangingTheme(false);
+      }, 1000);
+    }, 300);
+  };
 
   useEffect(() => {
     changeColorVariables(theme);
