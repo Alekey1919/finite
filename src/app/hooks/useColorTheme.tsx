@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { ColorThemesEnum } from "../utils/autoDetectColorPreference";
 import useThemeStore from "../stores/themeStore";
 import { setCookie } from "../utils/cookies";
@@ -13,21 +13,6 @@ const useColorTheme = () => {
   const [isChangingTheme, setIsChangingTheme] = useState(false);
 
   const { theme, setDarkMode, setLightMode } = useThemeStore();
-
-  const switchColorTheme = useCallback(() => {
-    if (isChangingTheme) return;
-
-    const newTheme =
-      theme === ColorThemesEnum.Dark
-        ? ColorThemesEnum.Light
-        : ColorThemesEnum.Dark;
-
-    if (newTheme === ColorThemesEnum.Dark) {
-      setDarkMode();
-    } else {
-      setLightMode();
-    }
-  }, [setDarkMode, setLightMode, theme, isChangingTheme]);
 
   // Adding transition to all elements so that the color change is smooth
   // Clearing it afterwards
@@ -92,9 +77,22 @@ const useColorTheme = () => {
     }, 300);
   };
 
-  useEffect(() => {
-    changeColorVariables(theme);
-  }, [changeColorVariables, theme]);
+  const switchColorTheme = useCallback(() => {
+    if (isChangingTheme) return;
+
+    const newTheme =
+      theme === ColorThemesEnum.Dark
+        ? ColorThemesEnum.Light
+        : ColorThemesEnum.Dark;
+
+    if (newTheme === ColorThemesEnum.Dark) {
+      setDarkMode();
+    } else {
+      setLightMode();
+    }
+
+    changeColorVariables(newTheme);
+  }, [isChangingTheme, theme, changeColorVariables, setDarkMode, setLightMode]);
 
   return { switchColorTheme, theme };
 };

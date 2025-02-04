@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { DateTime, Interval } from "luxon";
 
@@ -28,7 +30,6 @@ const useLivedTime = (birthDate: number) => {
   });
 
   useEffect(() => {
-    console.log("birthDate", birthDate);
     const birthDateTime = DateTime.fromMillis(birthDate);
 
     const updateLivedTime = () => {

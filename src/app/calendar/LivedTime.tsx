@@ -29,13 +29,17 @@ const LivedTime = ({ birthDate }: { birthDate: number }) => {
   const livedTime = useLivedTime(birthDate);
 
   return (
-    <div className="flex space-x-4 justify-center">
-      <PeriodDisplay time={livedTime.years} text="years" zeroRedundant />
-      <PeriodDisplay time={livedTime.months} text="months" zeroRedundant />
-      <PeriodDisplay time={livedTime.days} text="days" zeroRedundant />
-      <PeriodDisplay time={livedTime.hours} text="hours" />
-      <PeriodDisplay time={livedTime.minutes} text="minutes" />
-      <PeriodDisplay time={livedTime.seconds} text="seconds" />
+    <div className="flex flex-col space-y-4">
+      <span className="title text-center text-accent">You have lived:</span>
+
+      <div className="flex space-x-4 justify-center">
+        <PeriodDisplay time={livedTime.years} text="years" zeroRedundant />
+        <PeriodDisplay time={livedTime.months} text="months" zeroRedundant />
+        <PeriodDisplay time={livedTime.days} text="days" zeroRedundant />
+        <PeriodDisplay time={livedTime.hours} text="hours" />
+        <PeriodDisplay time={livedTime.minutes} text="minutes" />
+        <PeriodDisplay time={livedTime.seconds} text="seconds" />
+      </div>
     </div>
   );
 };
