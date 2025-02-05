@@ -10,26 +10,34 @@ const CalendarGrid = ({
 }: {
   boxesAmount: number;
   livedBoxesAmount: number;
-  columns: string;
+  columns: number;
   gap: string;
   boxSize: string;
 }) => {
+  const rows = boxesAmount / columns;
+
   return (
     <div
-      className={twMerge("grid mx-auto relative", columns, gap)}
+      className={twMerge("flex flex-col mx-auto relative", gap)}
       id="calendar"
       key={0}
     >
-      {new Array(boxesAmount).fill(null).map((_, index) => {
+      {new Array(rows).fill(null).map((_, index) => {
         return (
-          <div
-            className={twMerge(
-              "w-2 h-2 border-solid border-accent border-[1px] box",
-              index < livedBoxesAmount && "bg-accent",
-              boxSize
-            )}
-            key={index}
-          />
+          <div key={index} className={twMerge("flex", gap)}>
+            {new Array(columns).fill(null).map((_, index) => {
+              return (
+                <div
+                  className={twMerge(
+                    "w-2 h-2 border-solid border-accent border-[1px] box",
+                    index < livedBoxesAmount && "bg-accent",
+                    boxSize
+                  )}
+                  key={index}
+                />
+              );
+            })}
+          </div>
         );
       })}
     </div>

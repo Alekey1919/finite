@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const WeekMarks = ({
+const CalendarMarks = ({
   boxStyles,
   containerStyles,
 }: {
@@ -31,4 +31,4 @@ const WeekMarks = ({
   );
 };
 
-export default WeekMarks;
+export default CalendarMarks;
