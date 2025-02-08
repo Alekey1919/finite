@@ -21,7 +21,7 @@ export enum TimeMeasurements {
 }
 const Calendar = ({ birthDate }: { birthDate: number }) => {
   const [timeMeasurement, setTimeMeasurement] = useState(
-    TimeMeasurements.Weeks
+    TimeMeasurements.Years
   );
 
   const livedBoxesAmount = useMemo(() => {
@@ -37,6 +37,8 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
         return Math.floor(currentDate.diff(_birthDate, "weeks").weeks);
     }
   }, [birthDate, timeMeasurement]);
+
+  console.log("livedBoxesAmount", livedBoxesAmount);
 
   const lgScreen = useMediaQueryState({ breakpoint: DefaultBreakpoints.lg });
 
@@ -67,7 +69,7 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
 
   return (
     <div className="flex flex-col space-y-10 relative w-fit mx-auto">
-      <div className="flex space-x-8 justify-center text-[#a37a5c]">
+      <div className="flex space-x-8 justify-center text-primary">
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>
           Weeks
         </button>
@@ -79,7 +81,11 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
         </button>
       </div>
 
-      <div className="relative">
+      <div
+        className="relative appear-fade-in"
+        id="calendar"
+        key={timeMeasurement}
+      >
         <CalendarGrid
           boxSize={gridData.boxSize}
           boxesAmount={gridData.boxes}

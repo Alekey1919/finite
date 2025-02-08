@@ -1,46 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  --accent: #a37a5c;
-  --primary: #a37a5c;
+  --accent: #2d3538;
+  --background: #e9ecef
+  --secondary: #a37a5c;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
-body.changing-theme .box {
+body.changing-theme #calendar {
   display: none;
 }
 
-#calendar::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--background);
-  opacity: 0;
+.appear-fade-in {
+  animation: fadeIn 0.5s forwards;
 }
 
-#calendar.fade-in::after {
-  animation: fadeIn 1s forwards;
-  opacity: 1;
+#calendar.fade-in {
+  animation: fadeIn 0.5s forwards;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
   0% {
-    opacity: 1;
-    transform: translateY(0px);
+    opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: translateY(100%);
   }
 }
 
@@ -58,4 +50,21 @@ input[type="number"] {
 
 .title {
   @apply text-3xl font-bold;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
 }

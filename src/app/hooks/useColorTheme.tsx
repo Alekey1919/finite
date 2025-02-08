@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ColorThemesEnum } from "../utils/autoDetectColorPreference";
 import useThemeStore from "../stores/themeStore";
 import { setCookie } from "../utils/cookies";
@@ -59,7 +59,7 @@ const useColorTheme = () => {
   const fadeInCalendar = () => {
     const calendar = document.getElementById("calendar");
 
-    if (!calendar) return;
+    if (!calendar) return document.body.classList.remove("changing-theme");
 
     setIsChangingTheme(true);
 
@@ -73,26 +73,39 @@ const useColorTheme = () => {
         // Removing the fade-in class so that it is ready to perform the animation once we change the theme again
         calendar.classList.remove("fade-in");
         setIsChangingTheme(false);
-      }, 1000);
+      }, 500);
     }, 300);
   };
 
-  const switchColorTheme = useCallback(() => {
-    if (isChangingTheme) return;
+  const switchColorTheme = useCallback(
+    (initialTheme?: ColorThemesEnum) => {
+      if (isChangingTheme) return;
 
-    const newTheme =
-      theme === ColorThemesEnum.Dark
-        ? ColorThemesEnum.Light
-        : ColorThemesEnum.Dark;
+      let newTheme = ColorThemesEnum.Dark;
 
-    if (newTheme === ColorThemesEnum.Dark) {
-      setDarkMode();
-    } else {
-      setLightMode();
-    }
+      if (initialTheme) {
+        newTheme = initialTheme;
+      } else {
+        newTheme =
+          theme === ColorThemesEnum.Dark
+            ? ColorThemesEnum.Light
+            : ColorThemesEnum.Dark;
+      }
 
-    changeColorVariables(newTheme);
-  }, [isChangingTheme, theme, changeColorVariables, setDarkMode, setLightMode]);
+      if (newTheme === ColorThemesEnum.Dark) {
+        setDarkMode();
+      } else {
+        setLightMode();
+      }
+
+      changeColorVariables(newTheme);
+    },
+    [isChangingTheme, theme, changeColorVariables, setDarkMode, setLightMode]
+  );
+
+  useEffect(() => {
+    switchColorTheme(theme);
+  }, []);
 
   return { switchColorTheme, theme };
 };

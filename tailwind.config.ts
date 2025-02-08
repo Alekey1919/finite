@@ -11,6 +11,7 @@ export default {
       colors: {
         accent: "var(--accent)",
         "accent-dark": "var(--accent-dark)",
+        primary: "#a37a5c",
         background: "var(--background)",
       },
       screens: {
