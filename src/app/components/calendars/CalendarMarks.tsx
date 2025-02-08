@@ -10,7 +10,7 @@ const CalendarMarks = ({
   return (
     <div
       className={twMerge(
-        "absolute -right-8 top-0 bottom-0 grid grid-rows-9 items-end",
+        "absolute -right-8 lg:-right-11 top-0 bottom-0 grid grid-rows-9 items-end",
         containerStyles
       )}
     >

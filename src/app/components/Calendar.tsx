@@ -8,7 +8,7 @@ import {
   WEEKS_IN_LIFE,
 } from "../helper/unitAmounts";
 import { DateTime } from "luxon";
-import WeekMarks from "./calendars/CalendarMarks";
+import CalendarMarks from "./calendars/CalendarMarks";
 import CalendarGrid from "./calendars/CalendarGrid";
 import useMediaQueryState, {
   DefaultBreakpoints,
@@ -38,9 +38,8 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
     }
   }, [birthDate, timeMeasurement]);
 
-  console.log("livedBoxesAmount", livedBoxesAmount);
-
   const lgScreen = useMediaQueryState({ breakpoint: DefaultBreakpoints.lg });
+  const threeXlScreen = useMediaQueryState({ breakpoint: "1920px" });
 
   const gridData = useMemo(() => {
     if (timeMeasurement === TimeMeasurements.Weeks) {
@@ -52,7 +51,7 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
       };
     } else if (timeMeasurement === TimeMeasurements.Months) {
       return {
-        colums: 24,
+        colums: threeXlScreen ? 30 : 24,
         boxes: MONTHS_IN_LIFE,
         boxSize: "w-2 h-2 sm:w-4 sm:h-4",
         gap: "gap-[4px] lg:gap-[7px]",
@@ -68,7 +67,7 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
   }, [lgScreen, timeMeasurement]);
 
   return (
-    <div className="flex flex-col space-y-10 relative w-fit mx-auto">
+    <div className="flex flex-col space-y-10 relative w-fit mx-auto overflow-visible">
       <div className="flex space-x-8 justify-center text-primary">
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>
           Weeks
@@ -93,8 +92,12 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
           columns={gridData.colums}
           livedBoxesAmount={livedBoxesAmount}
         />
-        <WeekMarks
-          containerStyles={twMerge(gridData.gap)}
+        <CalendarMarks
+          containerStyles={twMerge(
+            gridData.gap,
+            timeMeasurement !== TimeMeasurements.Years &&
+              "[@media(max-width:400px)]:-right-5"
+          )}
           boxStyles={gridData.boxSize}
         />
       </div>

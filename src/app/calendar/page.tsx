@@ -13,7 +13,7 @@ const Page = () => {
   }
 
   return (
-    <div className="flex flex-col space-y-8 pb-20">
+    <div className="flex flex-col space-y-8 pb-10 lg:pb-20">
       <LivedTime birthDate={birthDate} />
       <Calendar birthDate={birthDate} />
     </div>
