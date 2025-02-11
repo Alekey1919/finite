@@ -1,14 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
+  /* Default theme */
+  --background: #e9ecef;
   --accent: #2d3538;
-  --background: #e9ecef
   --secondary: #a37a5c;
 }
 
+[data-theme="dark"] {
+  --background: #2d3538;
+  --accent: #e9ecef;
+}
+
 body {
-  color: var(--foreground);
+  color: var(--accent);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;

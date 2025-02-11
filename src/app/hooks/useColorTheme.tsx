@@ -1,18 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { ColorThemesEnum } from "../utils/autoDetectColorPreference";
-import useThemeStore from "../stores/themeStore";
 import { setCookie } from "../utils/cookies";
-
-export const ColorPalette = {
-  light: "#e9ecef",
-  dark: "#2d3538",
-  accent: "#a37a5c",
-};
+import { useTheme } from "next-themes";
 
 const useColorTheme = () => {
   const [isChangingTheme, setIsChangingTheme] = useState(false);
 
-  const { theme, setDarkMode, setLightMode } = useThemeStore();
+  const { theme, setTheme } = useTheme();
 
   // Adding transition to all elements so that the color change is smooth
   // Clearing it afterwards
@@ -30,31 +24,31 @@ const useColorTheme = () => {
     }, 2000); // Using 2s because texts take more time to change (honestly I have no idea why but it looks cool xd)
   };
 
-  const changeColorVariables = useCallback((newTheme: ColorThemesEnum) => {
-    const root = document.querySelector(":root") as HTMLElement;
+  const changeColorVariables = useCallback(
+    ({
+      newTheme,
+      animate,
+    }: {
+      newTheme: ColorThemesEnum;
+      animate: boolean;
+    }) => {
+      const root = document.querySelector(":root") as HTMLElement;
 
-    // This applies display none to the calendar so that the transition is smooth, otherwise it could lag the page too much
-    document.body.classList.add("changing-theme");
+      // This applies display none to the calendar so that the transition is smooth, otherwise it could lag the page too much
+      document.body.classList.add("changing-theme");
 
-    if (!root) return;
+      if (!root) return;
 
-    const background =
-      newTheme === ColorThemesEnum.Dark
-        ? ColorPalette.dark
-        : ColorPalette.light;
-    const accent =
-      newTheme === ColorThemesEnum.Dark
-        ? ColorPalette.light
-        : ColorPalette.dark;
+      if (animate) {
+        handleTransition();
+      }
 
-    handleTransition();
-    root?.style.setProperty("--background", background);
-    root?.style.setProperty("--accent", accent);
+      setCookie("theme", newTheme);
 
-    setCookie("theme", newTheme);
-
-    fadeInCalendar();
-  }, []);
+      fadeInCalendar();
+    },
+    []
+  );
 
   const fadeInCalendar = () => {
     const calendar = document.getElementById("calendar");
@@ -92,20 +86,12 @@ const useColorTheme = () => {
             : ColorThemesEnum.Dark;
       }
 
-      if (newTheme === ColorThemesEnum.Dark) {
-        setDarkMode();
-      } else {
-        setLightMode();
-      }
+      setTheme(newTheme === ColorThemesEnum.Dark ? "dark" : "light");
 
-      changeColorVariables(newTheme);
+      changeColorVariables({ newTheme, animate: initialTheme === undefined });
     },
-    [isChangingTheme, theme, changeColorVariables, setDarkMode, setLightMode]
+    [isChangingTheme, theme, changeColorVariables, setTheme]
   );
-
-  useEffect(() => {
-    switchColorTheme(theme);
-  }, []);
 
   return { switchColorTheme, theme };
 };

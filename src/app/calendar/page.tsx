@@ -4,9 +4,18 @@ import LivedTime from "./LivedTime";
 import BirthDateInput from "./BirthDateInput";
 import useUserDataStore from "../stores/userDataStore";
 import Calendar from "../components/Calendar";
+import { useEffect, useState } from "react";
 
 const Page = () => {
+  const [domReady, setDomReady] = useState(false);
+
   const { birthDate } = useUserDataStore();
+
+  useEffect(() => {
+    setDomReady(true);
+  }, []);
+
+  if (!domReady) return <></>;
 
   if (!birthDate) {
     return <BirthDateInput />;

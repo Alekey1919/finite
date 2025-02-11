@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import Navbar from "./components/Navbar";
+import { ThemeProvider } from "next-themes";
 
 const oswald = Oswald({
   variable: "--font-geist-mono",
@@ -24,12 +25,18 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="min-h-screen w-screen bg-background">
+    <html
+      lang={locale}
+      className="min-h-screen w-screen bg-background"
+      suppressHydrationWarning
+    >
       <body className={`${oswald.variable} antialiased`}>
-        <Navbar />
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <Navbar />
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
