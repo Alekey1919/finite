@@ -1,7 +1,7 @@
 "use client";
 
+import useLivedTime from "@/app/hooks/useLivedTime";
 import { twMerge } from "tailwind-merge";
-import useLivedTime from "../hooks/useLivedTime";
 
 const PeriodDisplay = ({
   text,
@@ -19,7 +19,9 @@ const PeriodDisplay = ({
         zeroRedundant && time < 1 && "hidden"
       )}
     >
-      <span className="font-bold text-2xl">{time}</span>
+      <span className="font-bold text-2xl">
+        {zeroRedundant ? time : `${time}`.padStart(2, "0")}
+      </span>
       <span className="capitalize font-medium text-sm">{text}</span>
     </div>
   );

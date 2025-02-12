@@ -6,13 +6,13 @@ import {
   LIFE_EXPECTANCY,
   MONTHS_IN_LIFE,
   WEEKS_IN_LIFE,
-} from "../helper/unitAmounts";
+} from "../../helper/unitAmounts";
 import { DateTime } from "luxon";
-import CalendarMarks from "./calendars/CalendarMarks";
-import CalendarGrid from "./calendars/CalendarGrid";
+import CalendarMarks from "./CalendarMarks";
+import CalendarGrid from "./CalendarGrid";
 import useMediaQueryState, {
   DefaultBreakpoints,
-} from "../hooks/useMediaQueryState";
+} from "../../hooks/useMediaQueryState";
 
 export enum TimeMeasurements {
   Weeks = "weeks",

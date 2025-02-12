@@ -1,8 +1,8 @@
 "use client";
 
+import useUserDataStore from "@/app/stores/userDataStore";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import useUserDataStore from "../stores/userDataStore";
 
 const maxYear = new Date().getFullYear();
 
