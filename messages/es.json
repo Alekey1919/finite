@@ -1,6 +1,8 @@
 {
   "day": "Día",
   "days": "Días",
+  "week": "Semana",
+  "weeks": "Semanas",
   "month": "Mes",
   "months": "Meses",
   "year": "Año",
@@ -12,5 +14,7 @@
   "second": "Segundo",
   "seconds": "Segundos",
   "date": "Date",
-  "save": "Guardar"
+  "save": "Guardar",
+  "enterBirthDate": "Ingresa tu fecha de nacimiento",
+  "youHaveLived": "Has vivido:"
 }

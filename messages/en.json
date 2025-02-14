@@ -1,6 +1,8 @@
 {
   "day": "Day",
   "days": "Days",
+  "week": "Week",
+  "weeks": "Weeks",
   "month": "Month",
   "months": "Months",
   "year": "Year",
@@ -12,5 +14,7 @@
   "second": "Second",
   "seconds": "Seconds",
   "date": "Date",
-  "save": "Save"
+  "save": "Save",
+  "enterBirthDate": "Enter your birth date",
+  "youHaveLived": "You have lived:"
 }

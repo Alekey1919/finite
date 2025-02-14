@@ -62,7 +62,7 @@ const BirthDateInput = () => {
 
   return (
     <div className="flex flex-col items-center space-y-8 lg:space-y-10 h-full min-h-screen justify-center">
-      <h1 className="title">Enter your birth date</h1>
+      <h1 className="title">{t("enterBirthDate")}</h1>
       <div className="flex space-x-4">
         <Input setter={setDay} value={day} text={t("day")} options={days} />
         <Input

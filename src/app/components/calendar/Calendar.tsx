@@ -13,6 +13,7 @@ import CalendarGrid from "./CalendarGrid";
 import useMediaQueryState, {
   DefaultBreakpoints,
 } from "../../hooks/useMediaQueryState";
+import { useTranslations } from "next-intl";
 
 export enum TimeMeasurements {
   Weeks = "weeks",
@@ -23,6 +24,8 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
   const [timeMeasurement, setTimeMeasurement] = useState(
     TimeMeasurements.Years
   );
+
+  const t = useTranslations();
 
   const livedBoxesAmount = useMemo(() => {
     const _birthDate = DateTime.fromMillis(birthDate);
@@ -70,13 +73,13 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
     <div className="flex flex-col space-y-10 relative w-fit mx-auto overflow-visible">
       <div className="flex space-x-8 justify-center text-primary text-base 2xl:text-xl">
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>
-          Weeks
+          {t("weeks")}
         </button>
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Months)}>
-          Months
+          {t("months")}
         </button>
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Years)}>
-          Years
+          {t("years")}
         </button>
       </div>
 
