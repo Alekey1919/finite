@@ -5,12 +5,12 @@
 :root {
   /* Default theme */
   --background: #e9ecef;
-  --accent: #2d3538;
+  --accent: #101218;
   --secondary: #a37a5c;
 }
 
 [data-theme="dark"] {
-  --background: #2d3538;
+  --background: #101218;
   --accent: #e9ecef;
 }
 
@@ -56,7 +56,7 @@ input[type="number"] {
 }
 
 .title {
-  @apply text-3xl font-bold;
+  @apply text-2xl lg:text-3xl 2xl:text-4xl font-bold;
 }
 
 /* width */

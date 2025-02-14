@@ -68,7 +68,7 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
 
   return (
     <div className="flex flex-col space-y-10 relative w-fit mx-auto overflow-visible">
-      <div className="flex space-x-8 justify-center text-primary">
+      <div className="flex space-x-8 justify-center text-primary text-base 2xl:text-xl">
         <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>
           Weeks
         </button>
