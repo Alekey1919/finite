@@ -14,6 +14,10 @@
   --accent: #e9ecef;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: var(--accent);
   background: var(--background);

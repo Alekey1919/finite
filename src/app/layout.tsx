@@ -30,7 +30,9 @@ export default async function RootLayout({
       className="min-h-screen w-screen bg-background"
       suppressHydrationWarning
     >
-      <body className={`${oswald.variable} antialiased`}>
+      <body
+        className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden`}
+      >
         <ThemeProvider>
           <Navbar />
           <NextIntlClientProvider messages={messages}>
