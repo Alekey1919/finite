@@ -5,6 +5,7 @@ import useUserDataStore from "./stores/userDataStore";
 import BirthDateInput from "./components/calendar/BirthDateInput";
 import LivedTime from "./components/calendar/LivedTime";
 import Calendar from "./components/calendar/Calendar";
+import Quotes from "./components/Quotes";
 
 const Page = () => {
   const [domReady, setDomReady] = useState(false);
@@ -22,9 +23,12 @@ const Page = () => {
   }
 
   return (
-    <div className="flex flex-col space-y-16 py-10 lg:py-20">
-      <LivedTime birthDate={birthDate} />
-      <Calendar birthDate={birthDate} />
+    <div className="flex flex-col justify-between min-h-screen py-10 lg:py-20">
+      <div className="flex flex-col space-y-16">
+        <LivedTime birthDate={birthDate} />
+        <Calendar birthDate={birthDate} />
+      </div>
+      <Quotes />
     </div>
   );
 };

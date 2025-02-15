@@ -16,7 +16,7 @@ const BinIcon = () => {
       strokeLinecap="square"
       strokeLinejoin="miter"
       className={twMerge(
-        "w-6 2xl:w-8 transition-opacity duration-500",
+        "w-6 2xl:w-8 transition-opacity duration-500 cursor-pointer",
         !birthDate && "opacity-0"
       )}
       onClick={clearUserData}

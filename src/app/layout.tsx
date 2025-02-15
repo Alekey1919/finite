@@ -33,12 +33,12 @@ export default async function RootLayout({
       <body
         className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden`}
       >
-        <ThemeProvider>
-          <Navbar />
-          <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
+            <Navbar />
             {children}
-          </NextIntlClientProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

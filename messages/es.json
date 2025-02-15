@@ -16,5 +16,22 @@
   "date": "Date",
   "save": "Guardar",
   "enterBirthDate": "Ingresa tu fecha de nacimiento",
-  "youHaveLived": "Has vivido:"
+  "youHaveLived": "Has vivido:",
+  "timeIsFinite": "El tiempo es finito.",
+  "timeWaitsForNoOne": "El tiempo no espera a nadie.",
+  "youCantStopTime": "No puedes detener el tiempo.",
+  "nowYoungerThanNow": "Ahora eres más joven que ahora.",
+  "cantPauseLife": "No puedes poner pausa en la vida.",
+  "eachSecondIsUnique": "Cada segundo que pasa es un segundo que nunca recuperarás. Una vez que se va, se va.",
+  "talkToThatPerson": "Habla con esa persona.",
+  "goOnThatTrip": "Haz ese viaje.",
+  "startThatProject": "Comienza ese proyecto.",
+  "makeThatPhoneCall": "Haz esa llamada.",
+  "applyForThatJob": "Postúlate para ese trabajo.",
+  "pursueThatDream": "Persigue ese sueño.",
+  "stepOutsideComfortZone": "Sal de tu zona de confort.",
+  "turnIdeasIntoAction": "Convierte tus ideas en acción.",
+  "takeThatRisk": "Toma ese riesgo.",
+  "embraceTheChallenge": "Abraza el desafío.",
+  "soDontWait": "Así que no esperes."
 }

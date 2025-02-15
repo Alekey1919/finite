@@ -16,5 +16,22 @@
   "date": "Date",
   "save": "Save",
   "enterBirthDate": "Enter your birth date",
-  "youHaveLived": "You have lived:"
+  "youHaveLived": "You have lived:",
+  "timeIsFinite": "Time is finite.",
+  "timeWaitsForNoOne": "Time waits for no one.",
+  "youCantStopTime": "You can't stop time.",
+  "nowYoungerThanNow": "Right now you are younger than right now.",
+  "cantPauseLife": "You can’t press pause on life.",
+  "eachSecondIsUnique": "Each second that passes is a second you’ll never get back. Once it’s gone, it’s gone.",
+  "talkToThatPerson": "Talk to that person.",
+  "goOnThatTrip": "Go on that trip.",
+  "startThatProject": "Start that project.",
+  "makeThatPhoneCall": "Make that phone call.",
+  "applyForThatJob": "Apply for that job.",
+  "pursueThatDream": "Pursue that dream.",
+  "stepOutsideComfortZone": "Step outside your comfort zone.",
+  "turnIdeasIntoAction": "Turn your ideas into action.",
+  "takeThatRisk": "Take that risk.",
+  "embraceTheChallenge": "Embrace the challenge.",
+  "soDontWait": "So don't wait."
 }
