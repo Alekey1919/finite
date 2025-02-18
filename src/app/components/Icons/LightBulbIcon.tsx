@@ -6,7 +6,7 @@ const LightBulbIcon = () => {
 
   return (
     <svg
-      className="w-6 2xl:w-8 cursor-pointer"
+      className="w-6 2xl:w-8 cursor-pointer group-lightbulb"
       version="1.1"
       id="_x32_"
       xmlns="http://www.w3.org/2000/svg"
