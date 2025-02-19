@@ -3,7 +3,7 @@ import { Oswald } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { ThemeProvider } from "next-themes";
 
 const oswald = Oswald({
