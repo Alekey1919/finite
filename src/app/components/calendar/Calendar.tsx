@@ -13,28 +13,26 @@ import CalendarGrid from "./CalendarGrid";
 import useMediaQueryState, {
   DefaultBreakpoints,
 } from "../../hooks/useMediaQueryState";
-import { useTranslations } from "next-intl";
+import TimeMeasurementSelector from "./TimeMeasurementSelector";
 
-export enum TimeMeasurements {
+export enum TimeMeasurementsEnum {
   Weeks = "weeks",
   Months = "months",
   Years = "years",
 }
 const Calendar = ({ birthDate }: { birthDate: number }) => {
   const [timeMeasurement, setTimeMeasurement] = useState(
-    TimeMeasurements.Years
+    TimeMeasurementsEnum.Years
   );
-
-  const t = useTranslations();
 
   const livedBoxesAmount = useMemo(() => {
     const _birthDate = DateTime.fromMillis(birthDate);
     const currentDate = DateTime.now();
 
     switch (timeMeasurement) {
-      case TimeMeasurements.Years:
+      case TimeMeasurementsEnum.Years:
         return Math.floor(currentDate.diff(_birthDate, "years").years);
-      case TimeMeasurements.Months:
+      case TimeMeasurementsEnum.Months:
         return Math.floor(currentDate.diff(_birthDate, "months").months);
       default:
         return Math.floor(currentDate.diff(_birthDate, "weeks").weeks);
@@ -45,14 +43,14 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
   const threeXlScreen = useMediaQueryState({ breakpoint: "1920px" });
 
   const gridData = useMemo(() => {
-    if (timeMeasurement === TimeMeasurements.Weeks) {
+    if (timeMeasurement === TimeMeasurementsEnum.Weeks) {
       return {
         colums: lgScreen ? 52 : 26,
         boxes: WEEKS_IN_LIFE,
         boxSize: "w-2 h-2 xl:w-3 xl:h-3 3xl:w-[18px] 3xl:h-[18px]",
         gap: "gap-1 xl:gap-[5px] 3xl:gap-1.5",
       };
-    } else if (timeMeasurement === TimeMeasurements.Months) {
+    } else if (timeMeasurement === TimeMeasurementsEnum.Months) {
       return {
         colums: threeXlScreen ? 30 : 24,
         boxes: MONTHS_IN_LIFE,
@@ -71,18 +69,10 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
 
   return (
     <div className="flex flex-col space-y-10 relative w-fit mx-auto overflow-visible">
-      <div className="flex space-x-8 justify-center text-primary text-base 2xl:text-xl">
-        <button onClick={() => setTimeMeasurement(TimeMeasurements.Weeks)}>
-          {t("weeks")}
-        </button>
-        <button onClick={() => setTimeMeasurement(TimeMeasurements.Months)}>
-          {t("months")}
-        </button>
-        <button onClick={() => setTimeMeasurement(TimeMeasurements.Years)}>
-          {t("years")}
-        </button>
-      </div>
-
+      <TimeMeasurementSelector
+        timeMeasurement={timeMeasurement}
+        setTimeMeasurement={setTimeMeasurement}
+      />
       <div
         className="relative appear-fade-in"
         id="calendar"
@@ -98,7 +88,7 @@ const Calendar = ({ birthDate }: { birthDate: number }) => {
         <CalendarMarks
           containerStyles={twMerge(
             gridData.gap,
-            timeMeasurement !== TimeMeasurements.Years &&
+            timeMeasurement !== TimeMeasurementsEnum.Years &&
               "[@media(max-width:400px)]:-right-5"
           )}
           boxStyles={gridData.boxSize}
