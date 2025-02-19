@@ -10,8 +10,8 @@ const NavbarItem = ({
 }: {
   icon: ReactNode;
   text: string;
-  onClick: () => void;
   isNavbarOpen: boolean;
+  onClick?: () => void;
   styles?: string;
 }) => {
   return (

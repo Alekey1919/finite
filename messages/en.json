@@ -37,5 +37,7 @@
   "goDark": "Go dark",
   "goLight": "Go light",
   "switchLanguage": "Switch language",
-  "deleteBirthDate": "Delete birth date"
+  "deleteBirthDate": "Delete birth date",
+  "famousDeaths": "Famous deaths",
+  "lifeMilestones": "Life milestones"
 }

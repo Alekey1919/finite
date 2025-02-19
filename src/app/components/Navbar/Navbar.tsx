@@ -12,6 +12,10 @@ import NavbarItem from "./NavbarItem";
 import useColorTheme from "@/app/hooks/useColorTheme";
 import useUserDataStore from "@/app/stores/userDataStore";
 import { useTheme } from "next-themes";
+import CoffinIcon from "../Icons/CoffinIcon";
+import Link from "next/link";
+import { RoutesEnum } from "@/app/enums/RoutesEnum";
+import CalendarCheck from "../Icons/CalendarCheck";
 
 const Navbar = () => {
   const locale = useLocale();
@@ -59,6 +63,20 @@ const Navbar = () => {
           isNavbarOpen={isOpen}
           onClick={() => setUserLocale(locale === "en" ? "es" : "en")}
         />
+        <Link href={RoutesEnum.FamousDeaths}>
+          <NavbarItem
+            icon={<CoffinIcon />}
+            text={t("famousDeaths")}
+            isNavbarOpen={isOpen}
+          />
+        </Link>
+        <Link href={RoutesEnum.LifeMilestones}>
+          <NavbarItem
+            icon={<CalendarCheck />}
+            text={t("lifeMilestones")}
+            isNavbarOpen={isOpen}
+          />
+        </Link>
         <NavbarItem
           icon={<BinIcon />}
           text={t("deleteBirthDate")}
