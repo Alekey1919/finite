@@ -5,18 +5,20 @@ import { setUserLocale } from "../../services/locale";
 import BinIcon from "../Icons/BinIcon";
 import Burger from "../Icons/Burger";
 import LightBulbIcon from "../Icons/LightBulbIcon";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 import useMediaQueryState from "../../hooks/useMediaQueryState";
 import NavbarItem from "./NavbarItem";
 import useColorTheme from "@/app/hooks/useColorTheme";
 import useUserDataStore from "@/app/stores/userDataStore";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const locale = useLocale();
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const { theme } = useTheme();
   const isTouch = useMediaQueryState({
     query: "(hover: none), (pointer: coarse)",
   });
@@ -24,6 +26,8 @@ const Navbar = () => {
   const { switchColorTheme } = useColorTheme();
 
   const { birthDate, clearUserData } = useUserDataStore();
+
+  const t = useTranslations();
 
   return (
     <nav
@@ -45,19 +49,19 @@ const Navbar = () => {
       >
         <NavbarItem
           icon={<LightBulbIcon />}
-          text={"Go Dark"}
+          text={t(theme === "light" ? "goDark" : "goLight")}
           isNavbarOpen={isOpen}
           onClick={() => switchColorTheme()}
         />
         <NavbarItem
           icon={<span className="w-6 h-6 text-center">{locale}</span>}
-          text={"Change language"}
+          text={t("switchLanguage")}
           isNavbarOpen={isOpen}
           onClick={() => setUserLocale(locale === "en" ? "es" : "en")}
         />
         <NavbarItem
           icon={<BinIcon />}
-          text={"Delete birth date"}
+          text={t("deleteBirthDate")}
           isNavbarOpen={isOpen}
           onClick={clearUserData}
           styles={!birthDate ? "opacity-0" : ""}
