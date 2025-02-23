@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { TimeMeasurementsEnum } from "./Calendar";
 import { useTranslations } from "next-intl";
+import { TimeMeasurementsEnum } from "./Calendar";
 
 const TimeMeasurementSelector = ({
   timeMeasurement,

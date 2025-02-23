@@ -23,7 +23,7 @@ const Page = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between min-h-screen py-10 lg:py-20">
+    <div className="flex flex-col justify-between min-h-screen">
       <div className="flex flex-col space-y-16">
         <LivedTime birthDate={birthDate} />
         <Calendar birthDate={birthDate} />

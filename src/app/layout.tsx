@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
-import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import Navbar from "./components/Navbar/Navbar";
 import { ThemeProvider } from "next-themes";
+import "./globals.css";
 
 const oswald = Oswald({
   variable: "--font-geist-mono",
@@ -31,7 +31,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden`}
+        className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden py-10 lg:py-20`}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
