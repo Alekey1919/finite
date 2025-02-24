@@ -22,7 +22,7 @@ const Burger = ({
   return (
     <button
       className={twMerge(
-        "burger -translate-x-3 lg:hidden !transition-none w-4 h-4 bg-red-200",
+        "burger -translate-x-3 lg:hidden !transition-none w-4 h-4",
         isOpen && "active"
       )}
       onClick={() => setIsOpen((curr) => !curr)}

@@ -16,6 +16,7 @@ import CoffinIcon from "../Icons/CoffinIcon";
 import Link from "next/link";
 import { RoutesEnum } from "@/app/enums/RoutesEnum";
 import CalendarCheck from "../Icons/CalendarCheck";
+import MyCalendarIcon from "../Icons/MyCalendarIcon";
 
 const Navbar = () => {
   const locale = useLocale();
@@ -36,8 +37,8 @@ const Navbar = () => {
   return (
     <nav
       className={twMerge(
-        "flex flex-col space-y-4 h-screen fixed top-0 left-0 bottom-0 pl-4 lg:pl-4 2xl:pl-8 transition-colors max-h-[50vh]",
-        isOpen && "bg-background lg:w-[200px]"
+        "flex flex-col h-fit space-y-4 fixed top-0 left-0 bottom-0 pl-4 lg:pl-4 2xl:pl-8 transition-colors pb-10",
+        isOpen && "bg-background lg:w-[200px] z-10"
       )}
       onMouseEnter={isTouch ? undefined : () => setIsOpen(true)}
       onMouseLeave={isTouch ? undefined : () => setIsOpen(false)}
@@ -51,18 +52,13 @@ const Navbar = () => {
             : "-translate-x-[100px] lg:translate-x-0"
         )}
       >
-        <NavbarItem
-          icon={<LightBulbIcon />}
-          text={t(theme === "light" ? "goDark" : "goLight")}
-          isNavbarOpen={isOpen}
-          onClick={() => switchColorTheme()}
-        />
-        <NavbarItem
-          icon={<span className="w-6 h-6 text-center">{locale}</span>}
-          text={t("switchLanguage")}
-          isNavbarOpen={isOpen}
-          onClick={() => setUserLocale(locale === "en" ? "es" : "en")}
-        />
+        <Link href={RoutesEnum.Home}>
+          <NavbarItem
+            icon={<MyCalendarIcon />}
+            text={t("yourLife")}
+            isNavbarOpen={isOpen}
+          />
+        </Link>
         <Link href={RoutesEnum.FamousDeaths}>
           <NavbarItem
             icon={<CoffinIcon />}
@@ -77,6 +73,18 @@ const Navbar = () => {
             isNavbarOpen={isOpen}
           />
         </Link>
+        <NavbarItem
+          icon={<LightBulbIcon />}
+          text={t(theme === "light" ? "goDark" : "goLight")}
+          isNavbarOpen={isOpen}
+          onClick={() => switchColorTheme()}
+        />
+        <NavbarItem
+          icon={<span className="w-6 h-6 text-center">{locale}</span>}
+          text={t("switchLanguage")}
+          isNavbarOpen={isOpen}
+          onClick={() => setUserLocale(locale === "en" ? "es" : "en")}
+        />
         <NavbarItem
           icon={<BinIcon />}
           text={t("deleteBirthDate")}
