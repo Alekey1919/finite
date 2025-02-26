@@ -14,8 +14,9 @@ import {
 import useUserDataStore from "../stores/userDataStore";
 import getBoxNumber from "../helper/getBoxNumber";
 import { DateTime } from "luxon";
-import { deathPeople } from "@/app/data/famousDeaths.json";
+import deathPeople from "@/app/data/famousDeaths.json";
 import { ICalendarGridProps } from "../components/calendar/CalendarGrid";
+import lifeMilestones from "@/app/data/lifeMilestones.json";
 
 const useCalendarData = ({
   calendarType,
@@ -40,6 +41,23 @@ const useCalendarData = ({
 
       dates[calendarMark] ??= []; // Ensures dates[calendarMark] is an empty array if undefined
       dates[calendarMark].push(person.name);
+    });
+
+    return dates;
+  }, [timeMeasurement]);
+
+  const getLifeMilestones = useCallback(() => {
+    const dates: { [key: number]: string[] } = {};
+
+    lifeMilestones.forEach((milestone) => {
+      const calendarMark = getBoxNumber({
+        startDate: DateTime.now().minus({ years: milestone.age }).toMillis(),
+        endDate: DateTime.now().toMillis(),
+        timeMeasurement,
+      });
+
+      dates[calendarMark] ??= []; // Ensures dates[calendarMark] is an empty array if undefined
+      dates[calendarMark].push(milestone.milestone);
     });
 
     return dates;
@@ -79,11 +97,20 @@ const useCalendarData = ({
         timeMeasurement,
       });
     } else if (calendarType === CalendarTypesEnum.FamousDeaths) {
-      data["famousDeaths"] = getFamousDeaths();
+      data["calendarMarks"] = getFamousDeaths();
+    } else if (calendarType === CalendarTypesEnum.LifeMilestones) {
+      data["calendarMarks"] = getLifeMilestones();
     }
 
     return data;
-  }, [birthDate, calendarType, getFamousDeaths, gridData, timeMeasurement]);
+  }, [
+    birthDate,
+    calendarType,
+    getFamousDeaths,
+    getLifeMilestones,
+    gridData,
+    timeMeasurement,
+  ]);
 
   return { calendarData };
 };

@@ -1,0 +1,13 @@
+[
+  { "milestone": "First kiss", "age": 15 },
+  { "milestone": "Passing driving test", "age": 20 },
+  { "milestone": "First job", "age": 16 },
+  { "milestone": "Graduate from college", "age": 22 },
+  { "milestone": "Financial independence", "age": 25 },
+  { "milestone": "Move out of parents' home", "age": 26 },
+  { "milestone": "Get married", "age": 30 },
+  { "milestone": "Have first child", "age": 31 },
+  { "milestone": "Buy first home", "age": 32 },
+  { "milestone": "Reach peak earning years", "age": 50 },
+  { "milestone": "Retirement", "age": 60 }
+]

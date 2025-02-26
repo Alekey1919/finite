@@ -8,7 +8,7 @@ export interface ICalendarGridProps {
   columns: number;
   gap: string;
   boxSize: string;
-  famousDeaths?: { [key: number]: string[] };
+  calendarMarks?: { [key: number]: string[] };
 }
 
 const CalendarGrid = ({
@@ -17,7 +17,7 @@ const CalendarGrid = ({
   columns,
   gap,
   boxSize,
-  famousDeaths,
+  calendarMarks,
 }: ICalendarGridProps) => {
   const rows = boxesAmount / columns;
 
@@ -29,7 +29,7 @@ const CalendarGrid = ({
             {new Array(columns).fill(null).map((_, boxIndex) => {
               const generalBoxNumber = rowIndex * columns + boxIndex;
 
-              const deceased = famousDeaths && famousDeaths[generalBoxNumber];
+              const marks = calendarMarks && calendarMarks[generalBoxNumber];
 
               return (
                 <div
@@ -38,12 +38,12 @@ const CalendarGrid = ({
                     generalBoxNumber < livedBoxesAmount && "bg-accent",
                     generalBoxNumber === livedBoxesAmount &&
                       "bg-primary animate-pulse",
-                    deceased && "bg-accent",
+                    marks && "bg-accent",
                     boxSize
                   )}
                   key={boxIndex}
                 >
-                  {deceased && <DeceasedTooltip deceased={deceased} />}
+                  {marks && <DeceasedTooltip marks={marks} />}
                 </div>
               );
             })}

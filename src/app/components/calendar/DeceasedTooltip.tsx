@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const DeceasedTooltip = ({ deceased }) => {
+const DeceasedTooltip = ({ marks }: { marks: string[] }) => {
   const [offsetX, setOffsetX] = useState("");
   const [offsetY, setOffsetY] = useState("");
   const [position, setPosition] = useState<{ x: number; y: number }>({
@@ -63,7 +63,7 @@ const DeceasedTooltip = ({ deceased }) => {
       }}
       ref={toolTipRef}
     >
-      {deceased.map((name, index) => {
+      {marks.map((name, index) => {
         return <span key={index}>{name}</span>;
       })}
     </div>
