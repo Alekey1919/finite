@@ -2,6 +2,15 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import DeceasedTooltip from "./DeceasedTooltip";
 
+export interface ICalendarGridProps {
+  boxesAmount: number;
+  livedBoxesAmount?: number;
+  columns: number;
+  gap: string;
+  boxSize: string;
+  famousDeaths?: { [key: number]: string[] };
+}
+
 const CalendarGrid = ({
   boxesAmount,
   livedBoxesAmount,
@@ -9,14 +18,7 @@ const CalendarGrid = ({
   gap,
   boxSize,
   famousDeaths,
-}: {
-  boxesAmount: number;
-  livedBoxesAmount: number | null;
-  columns: number;
-  gap: string;
-  boxSize: string;
-  famousDeaths?: { [key: number]: string[] };
-}) => {
+}: ICalendarGridProps) => {
   const rows = boxesAmount / columns;
 
   return (

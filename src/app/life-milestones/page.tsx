@@ -2,13 +2,13 @@
 
 import Calendar, { CalendarTypesEnum } from "../components/calendar/Calendar";
 
-const FamousDeaths = () => {
+const LifeMilestones = () => {
   return (
     <div className="flex flex-col justify-center space-y-10">
       <h1 className="title text-center">Famous deaths</h1>
-      <Calendar calendarType={CalendarTypesEnum.FamousDeaths} />
+      <Calendar calendarType={CalendarTypesEnum.LifeMilestones} />
     </div>
   );
 };
 
-export default FamousDeaths;
+export default LifeMilestones;

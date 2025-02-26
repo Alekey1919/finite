@@ -1,6 +1,7 @@
 "use client";
 
 import useLivedTime from "@/app/hooks/useLivedTime";
+import useUserDataStore from "@/app/stores/userDataStore";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
@@ -34,7 +35,9 @@ const PeriodDisplay = ({
   );
 };
 
-const LivedTime = ({ birthDate }: { birthDate: number }) => {
+const LivedTime = () => {
+  const { birthDate } = useUserDataStore();
+
   const livedTime = useLivedTime(birthDate);
 
   const t = useTranslations();
