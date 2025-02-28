@@ -17,6 +17,7 @@ import { DateTime } from "luxon";
 import deathPeople from "@/app/data/famousDeaths.json";
 import { ICalendarGridProps } from "../components/calendar/CalendarGrid";
 import lifeMilestones from "@/app/data/lifeMilestones.json";
+import useRegionStore from "../stores/regionStore";
 
 const useCalendarData = ({
   calendarType,
@@ -28,6 +29,7 @@ const useCalendarData = ({
   const lgScreen = useMediaQueryState({ breakpoint: DefaultBreakpoints.lg });
   const threeXlScreen = useMediaQueryState({ breakpoint: "1920px" });
   const { birthDate } = useUserDataStore();
+  const { region } = useRegionStore();
 
   const getFamousDeaths = useCallback(() => {
     const dates: { [key: number]: string[] } = {};
@@ -49,7 +51,7 @@ const useCalendarData = ({
   const getLifeMilestones = useCallback(() => {
     const dates: { [key: number]: string[] } = {};
 
-    lifeMilestones.forEach((milestone) => {
+    lifeMilestones[region].forEach((milestone) => {
       const calendarMark = getBoxNumber({
         startDate: DateTime.now().minus({ years: milestone.age }).toMillis(),
         endDate: DateTime.now().toMillis(),
@@ -61,7 +63,7 @@ const useCalendarData = ({
     });
 
     return dates;
-  }, [timeMeasurement]);
+  }, [timeMeasurement, region]);
 
   const gridData = useMemo(() => {
     if (timeMeasurement === TimeMeasurementsEnum.Weeks) {

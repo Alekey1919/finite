@@ -17,6 +17,7 @@ import Link from "next/link";
 import { RoutesEnum } from "@/app/enums/RoutesEnum";
 import CalendarCheck from "../Icons/CalendarCheck";
 import MyCalendarIcon from "../Icons/MyCalendarIcon";
+import useDefaultLanguage from "@/app/hooks/useDefaultLanguage";
 
 const Navbar = () => {
   const locale = useLocale();
@@ -33,6 +34,8 @@ const Navbar = () => {
   const { birthDate, clearUserData } = useUserDataStore();
 
   const t = useTranslations();
+
+  useDefaultLanguage();
 
   return (
     <nav

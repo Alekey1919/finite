@@ -1,6 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import DeceasedTooltip from "./DeceasedTooltip";
+import Tooltip from "./Tooltip";
 
 export interface ICalendarGridProps {
   boxesAmount: number;
@@ -43,7 +43,7 @@ const CalendarGrid = ({
                   )}
                   key={boxIndex}
                 >
-                  {marks && <DeceasedTooltip marks={marks} />}
+                  {marks && <Tooltip text={marks} />}
                 </div>
               );
             })}
