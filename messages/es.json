@@ -39,6 +39,21 @@
   "switchLanguage": "Cambiar idioma",
   "deleteBirthDate": "Eliminar fecha de nacimiento",
   "famousDeaths": "Muertes famosas",
-  "lifeMilestones": "Peldaños de vida",
-  "yourLife": "Tu vida"
+  "yourLife": "Tu vida",
+  "lifeMilestones": {
+    "title": "Peldaños de vida",
+    "disclaimer1": "Este calendario muestra las edades promedio en las que las personas alcanzan diferentes hitos comunes en sus vidas.",
+    "disclaimer2": "La información presentada aquí fue tomada de diversas fuentes y (en el caso de Argentina) de mi propia experiencia consultando a diferentes personas. Esto no es 100% preciso, pero sirve como ejemplo de una vida 'ordinaria'.",
+    "disclaimer3": "Sin embargo, la vida no es una carrera y cada quien tiene su propio camino. No te compares con los demás y simplemente vive tu vida.",
+    "firstKiss": "Primer beso",
+    "drivingTest": "Aprobar el examen de conducir",
+    "firstJob": "Primer trabajo",
+    "graduateCollege": "Graduarse de la universidad",
+    "moveOut": "Mudarse de la casa de los padres",
+    "getMarried": "Casarse",
+    "firstChild": "Tener el primer hijo",
+    "firstHome": "Comprar una casa",
+    "retirement": "Jubilarse",
+    "lifeExpectancy": "Esperanza de vida"
+  }
 }

@@ -39,6 +39,21 @@
   "switchLanguage": "Switch language",
   "deleteBirthDate": "Delete birth date",
   "famousDeaths": "Famous deaths",
-  "lifeMilestones": "Life milestones",
-  "yourLife": "Your life"
+  "yourLife": "Your life",
+  "lifeMilestones": {
+    "title": "Life milestones",
+    "disclaimer1": "This calendar shows the average ages in which people reach different common milestones in their lives.",
+    "disclaimer2": "The information presented here was taken from different sources and (in the case of Argentina) my own experience consulting different people. This is not 100% accurate but it serves as an example of an 'ordinary' life.",
+    "disclaimer3": "Nevertheless, life is not a race and everyone has their own path. Don't compare yourself with anyone else and just live your life.",
+    "firstKiss": "First kiss",
+    "drivingTest": "Passing driving test",
+    "firstJob": "First job",
+    "graduateCollege": "Graduate from college",
+    "moveOut": "Move out of parents' home",
+    "getMarried": "Get married",
+    "firstChild": "Have first child",
+    "firstHome": "Buy a house",
+    "retirement": "Retirement",
+    "lifeExpectancy": "Life expectancy"
+  }
 }

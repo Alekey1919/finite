@@ -1,24 +1,26 @@
 {
   "us": [
-    { "milestone": "First kiss", "age": 15 },
-    { "milestone": "Passing driving test", "age": 20 },
-    { "milestone": "First job", "age": 17 },
-    { "milestone": "Graduate from college", "age": 22 },
-    { "milestone": "Move out of parents' home", "age": 26 },
-    { "milestone": "Get married", "age": 32 },
-    { "milestone": "Have first child", "age": 31 },
-    { "milestone": "Buy first home", "age": 38 },
-    { "milestone": "Retirement", "age": 64 }
+    { "milestone": "firstKiss", "age": 15 },
+    { "milestone": "drivingTest", "age": 20 },
+    { "milestone": "firstJob", "age": 17 },
+    { "milestone": "graduateCollege", "age": 22 },
+    { "milestone": "moveOut", "age": 26 },
+    { "milestone": "getMarried", "age": 32 },
+    { "milestone": "firstChild", "age": 31 },
+    { "milestone": "firstHome", "age": 38 },
+    { "milestone": "retirement", "age": 64 },
+    { "milestone": "lifeExpectancy", "age": 77 }
   ],
   "ar": [
-    { "milestone": "First kiss", "age": 14 },
-    { "milestone": "Passing driving test", "age": 20 },
-    { "milestone": "First job", "age": 19 },
-    { "milestone": "Graduate from college", "age": 26 },
-    { "milestone": "Move out of parents' home", "age": 28 },
-    { "milestone": "Get married", "age": 36 },
-    { "milestone": "Have first child", "age": 32 },
-    { "milestone": "Buy first home", "age": 48 },
-    { "milestone": "Retirement", "age": 64 }
+    { "milestone": "firstKiss", "age": 14 },
+    { "milestone": "drivingTest", "age": 20 },
+    { "milestone": "firstJob", "age": 19 },
+    { "milestone": "graduateCollege", "age": 26 },
+    { "milestone": "moveOut", "age": 28 },
+    { "milestone": "getMarried", "age": 36 },
+    { "milestone": "firstChild", "age": 32 },
+    { "milestone": "firstHome", "age": 48 },
+    { "milestone": "retirement", "age": 64 },
+    { "milestone": "lifeExpectancy", "age": 76 }
   ]
 }

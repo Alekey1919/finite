@@ -41,7 +41,7 @@ const Navbar = () => {
     <nav
       className={twMerge(
         "flex flex-col h-fit space-y-4 fixed top-0 left-0 bottom-0 pl-4 lg:pl-4 2xl:pl-8 transition-colors pb-10",
-        isOpen && "bg-background lg:w-[200px] z-10"
+        isOpen && "bg-background lg:w-[250px] z-10"
       )}
       onMouseEnter={isTouch ? undefined : () => setIsOpen(true)}
       onMouseLeave={isTouch ? undefined : () => setIsOpen(false)}
@@ -72,7 +72,7 @@ const Navbar = () => {
         <Link href={RoutesEnum.LifeMilestones}>
           <NavbarItem
             icon={<CalendarCheck />}
-            text={t("lifeMilestones")}
+            text={t("lifeMilestones.title")}
             isNavbarOpen={isOpen}
           />
         </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
           text={t("deleteBirthDate")}
           isNavbarOpen={isOpen}
           onClick={clearUserData}
-          styles={!birthDate ? "opacity-0" : ""}
+          styles={!birthDate ? "opacity-0 pointer-events-none" : ""}
         />
       </div>
     </nav>

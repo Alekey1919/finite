@@ -18,6 +18,7 @@ import deathPeople from "@/app/data/famousDeaths.json";
 import { ICalendarGridProps } from "../components/calendar/CalendarGrid";
 import lifeMilestones from "@/app/data/lifeMilestones.json";
 import useRegionStore from "../stores/regionStore";
+import { useTranslations } from "next-intl";
 
 const useCalendarData = ({
   calendarType,
@@ -30,6 +31,8 @@ const useCalendarData = ({
   const threeXlScreen = useMediaQueryState({ breakpoint: "1920px" });
   const { birthDate } = useUserDataStore();
   const { region } = useRegionStore();
+
+  const t = useTranslations();
 
   const getFamousDeaths = useCallback(() => {
     const dates: { [key: number]: string[] } = {};
@@ -59,7 +62,7 @@ const useCalendarData = ({
       });
 
       dates[calendarMark] ??= []; // Ensures dates[calendarMark] is an empty array if undefined
-      dates[calendarMark].push(milestone.milestone);
+      dates[calendarMark].push(t(`lifeMilestones.${milestone.milestone}`));
     });
 
     return dates;

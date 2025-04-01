@@ -18,6 +18,11 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background: var(--secondary);
+  color: var(--accent);
+}
+
 body {
   color: var(--accent);
   background: var(--background);

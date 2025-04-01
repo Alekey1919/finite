@@ -32,6 +32,7 @@ export default async function RootLayout({
           <ThemeProvider>
             <Navbar />
             {children}
+            <div id="portal" />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
