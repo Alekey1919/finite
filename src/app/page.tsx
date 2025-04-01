@@ -23,7 +23,7 @@ const Page = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between min-h-screen">
+    <div className="flex flex-col justify-between min-h-screen layout">
       <div className="flex flex-col space-y-16">
         <LivedTime />
         <Calendar calendarType={CalendarTypesEnum.Personal} />

@@ -41,7 +41,7 @@ const LifeMilestones = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center space-y-10">
+      <div className="flex flex-col justify-center space-y-10 layout">
         <h1 className="title text-center">Life milestones</h1>
         <Calendar calendarType={CalendarTypesEnum.LifeMilestones} />
 

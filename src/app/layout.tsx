@@ -26,7 +26,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden py-10 lg:py-20`}
+        className={`${oswald.variable} antialiased max-w-[100vw] overflow-x-hidden`}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
