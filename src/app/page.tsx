@@ -28,7 +28,7 @@ const Page = () => {
         <LivedTime />
         <Calendar calendarType={CalendarTypesEnum.Personal} />
       </div>
-      <Quotes />
+      {/* <Quotes /> */}
     </div>
   );
 };

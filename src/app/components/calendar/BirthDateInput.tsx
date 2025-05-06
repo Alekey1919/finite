@@ -23,14 +23,14 @@ const Input = ({
   options: number[];
 }) => {
   return (
-    <div className="flex flex-col bg-transparent text-accent w-20 text-center space-y-2  text-base lg:text-lg 2xl:text-2xl">
+    <div className="flex flex-col bg-transparent text-accent w-20 text-center space-y-2 text-base lg:text-lg 2xl:text-2xl">
       <span className="text-center">{text}</span>
       <select
         name={text}
         id={text}
         value={value}
         onChange={(e) => setter(parseInt(e.target.value))}
-        className="appearance-none text-center bg-transparent border-b-[1px] border-solid border-accent"
+        className="appearance-none text-center bg-transparent border-b-[1px] border-solid border-accent cursor-pointer"
       >
         {options.map((option) => (
           <option
