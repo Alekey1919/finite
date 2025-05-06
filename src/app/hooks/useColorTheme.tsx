@@ -51,21 +51,33 @@ const useColorTheme = () => {
   );
 
   const fadeInCalendar = () => {
-    const calendar = document.getElementById("calendar");
+    const elementsToFade = document.getElementsByClassName(
+      "fade-with-theme-change"
+    );
 
-    if (!calendar) return document.body.classList.remove("changing-theme");
+    if (!elementsToFade.length) {
+      return document.body.classList.remove("changing-theme");
+    }
 
     setIsChangingTheme(true);
 
     setTimeout(() => {
       // Removing the class so that the calendar boxes are rendered
       document.body.classList.remove("changing-theme");
-      // Add the fade-in class to the calendar so that it fades in
-      calendar.classList.add("fade-in");
+      // Add the fade-in class to the elements so that they fades in
+
+      for (let i = 0; i < elementsToFade.length; i++) {
+        const element = elementsToFade[i] as HTMLElement;
+        element.classList.add("fade-in");
+      }
 
       setTimeout(() => {
-        // Removing the fade-in class so that it is ready to perform the animation once we change the theme again
-        calendar.classList.remove("fade-in");
+        // Removing the fade-in class so that they're ready to perform the animation once we change the theme again
+        for (let i = 0; i < elementsToFade.length; i++) {
+          const element = elementsToFade[i] as HTMLElement;
+          element.classList.remove("fade-in");
+        }
+
         setIsChangingTheme(false);
       }, 500);
     }, 300);

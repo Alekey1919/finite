@@ -54,6 +54,7 @@
     "firstChild": "Have first child",
     "firstHome": "Buy a house",
     "retirement": "Retirement",
-    "lifeExpectancy": "Life expectancy"
+    "lifeExpectancy": "Life expectancy",
+    "changeRegion": "Change region"
   }
 }

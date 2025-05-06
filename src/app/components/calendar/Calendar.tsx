@@ -33,8 +33,7 @@ const Calendar = ({ calendarType }: { calendarType: CalendarTypesEnum }) => {
         setTimeMeasurement={setTimeMeasurement}
       />
       <div
-        className="relative appear-fade-in"
-        id="calendar"
+        className="relative appear-fade-in fade-with-theme-change"
         key={timeMeasurement}
       >
         <CalendarGrid {...calendarData} />

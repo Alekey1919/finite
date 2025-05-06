@@ -45,14 +45,14 @@ const LifeMilestones = () => {
         <h1 className="title text-center">Life milestones</h1>
         <Calendar calendarType={CalendarTypesEnum.LifeMilestones} />
 
-        <div className="relative flex mx-auto group">
+        <div className="relative flex mx-auto group appear-fade-in fade-with-theme-change">
           <span
             className="uppercase cursor-pointer text-accent hover:text-primary transition-colors duration-300"
             onClick={() => setRegion(region === "us" ? "ar" : "us")}
           >
             {region}
           </span>
-          <Tooltip text={"Change region"} />
+          <Tooltip text={t("lifeMilestones.changeRegion")} />
         </div>
       </div>
 

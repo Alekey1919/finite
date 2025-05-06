@@ -30,7 +30,7 @@ body {
   overflow-x: hidden;
 }
 
-body.changing-theme #calendar {
+body.changing-theme .fade-with-theme-change {
   display: none;
 }
 
