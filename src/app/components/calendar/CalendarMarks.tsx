@@ -1,12 +1,18 @@
+import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
+import { TimeMeasurementsEnum } from "./Calendar";
 
 const CalendarMarks = ({
   boxStyles,
   containerStyles,
+  timeMeasurement,
 }: {
   boxStyles?: string;
   containerStyles?: string;
+  timeMeasurement: TimeMeasurementsEnum;
 }) => {
+  const t = useTranslations();
+
   return (
     <div
       className={twMerge(
@@ -14,6 +20,14 @@ const CalendarMarks = ({
         containerStyles
       )}
     >
+      <div
+        className={twMerge(
+          "hidden sm:block absolute -top-6 left-0 right-0 mx-auto text-xs",
+          timeMeasurement !== TimeMeasurementsEnum.Years && "-translate-x-1/2"
+        )}
+      >
+        {t("years")}
+      </div>
       {Array.from({ length: 9 }).map((_, index) => {
         return (
           <div

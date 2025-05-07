@@ -44,6 +44,7 @@ const Calendar = ({ calendarType }: { calendarType: CalendarTypesEnum }) => {
               "[@media(max-width:400px)]:-right-5"
           )}
           boxStyles={calendarData.boxSize}
+          timeMeasurement={timeMeasurement}
         />
       </div>
     </div>
