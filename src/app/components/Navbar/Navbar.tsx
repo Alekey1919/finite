@@ -83,7 +83,11 @@ const Navbar = () => {
           onClick={() => switchColorTheme()}
         />
         <NavbarItem
-          icon={<span className="w-6 h-6 text-center">{locale}</span>}
+          icon={
+            <span className="w-6 h-6 2xl:w-8 2xl:h-8 text-center flex items-center justify-center">
+              {locale}
+            </span>
+          }
           text={t("switchLanguage")}
           isNavbarOpen={isOpen}
           onClick={() => setUserLocale(locale === "en" ? "es" : "en")}
