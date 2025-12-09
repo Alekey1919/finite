@@ -21,7 +21,7 @@ const PeriodDisplay = ({
   return (
     <div
       className={twMerge(
-        "flex flex-col justify-center text-center text-accent aspect-square items-center",
+        "flex flex-col justify-center text-center text-accent aspect-square items-center flex-1",
         zeroRedundant && time < 1 && "hidden"
       )}
     >
@@ -46,7 +46,7 @@ const LivedTime = () => {
     <div className="flex flex-col space-y-4 2xl:space-y-8 max-w-96 lg:max-w-[500px] 2xl:max-w-[600px] mx-auto">
       <span className="title text-center text-accent">{t("youHaveLived")}</span>
 
-      <div className="grid grid-cols-6 gap-x-4 justify-center px-6">
+      <div className="flex space-x-10 justify-center px-6">
         <PeriodDisplay
           time={livedTime.years}
           pluralText="years"
@@ -78,7 +78,7 @@ const LivedTime = () => {
         <PeriodDisplay
           time={livedTime.seconds}
           pluralText="seconds"
-          singularText="second"
+          singularText="seconds"
         />
       </div>
     </div>
