@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useUserDataStore from "./stores/userDataStore";
 import BirthDateInput from "./components/calendar/BirthDateInput";
-import LivedTime from "./components/calendar/LivedTime";
 import Calendar, { CalendarTypesEnum } from "./components/calendar/Calendar";
-import Quotes from "./components/Quotes";
+import LivedTime from "./components/calendar/LivedTime";
+import useUserDataStore from "./stores/userDataStore";
 
 const Page = () => {
   const [domReady, setDomReady] = useState(false);

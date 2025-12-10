@@ -1,24 +1,24 @@
+import deathPeople from "@/app/data/famousDeaths.json";
+import lifeMilestones from "@/app/data/lifeMilestones.json";
+import useMediaQueryState, {
+  DefaultBreakpoints,
+} from "@/app/hooks/useMediaQueryState";
+import { DateTime } from "luxon";
+import { useTranslations } from "next-intl";
 import { useCallback, useMemo } from "react";
 import {
   CalendarTypesEnum,
   TimeMeasurementsEnum,
 } from "../components/calendar/Calendar";
-import useMediaQueryState, {
-  DefaultBreakpoints,
-} from "@/app/hooks/useMediaQueryState";
+import { ICalendarGridProps } from "../components/calendar/CalendarGrid";
+import getBoxNumber from "../helper/getBoxNumber";
 import {
   LIFE_EXPECTANCY,
   MONTHS_IN_LIFE,
   WEEKS_IN_LIFE,
 } from "../helper/unitAmounts";
-import useUserDataStore from "../stores/userDataStore";
-import getBoxNumber from "../helper/getBoxNumber";
-import { DateTime } from "luxon";
-import deathPeople from "@/app/data/famousDeaths.json";
-import { ICalendarGridProps } from "../components/calendar/CalendarGrid";
-import lifeMilestones from "@/app/data/lifeMilestones.json";
 import useRegionStore from "../stores/regionStore";
-import { useTranslations } from "next-intl";
+import useUserDataStore from "../stores/userDataStore";
 
 const useCalendarData = ({
   calendarType,
@@ -66,7 +66,7 @@ const useCalendarData = ({
     });
 
     return dates;
-  }, [timeMeasurement, region]);
+  }, [timeMeasurement, region, t]);
 
   const gridData = useMemo(() => {
     if (timeMeasurement === TimeMeasurementsEnum.Weeks) {
